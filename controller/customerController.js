@@ -1,20 +1,28 @@
-var customers=[];
-var recordIndex;
+ 
+ import customerModel from "../model/customerModel";
+ import {customers} from "../db/db.js";
 
-$('#customer-section').css({display:'block'});
-$('#item-section').css({display:'none'});
-$('#order-section').css({display:'none'})
-$('#orderDetails-section').css({display:'none'})
 
-//customer nav management
-$('#nav-customer').on('click',()=>{
+ // var customers=[];
+ var recordIndex;
+
+ $('#customer-section').css({display:'block'});
+ $('#item-section').css({display:'none'});
+ $('#order-section').css({display:'none'})
+ $('#orderDetails-section').css({display:'none'})
+
+
+  //customer nav management
+    $('#nav-customer').on('click',()=>{
     $('#customer-section').css({display:'block'});
     $('#item-section').css({display:'none'});
     $('#order-section').css({display:'none'})
     $('#orderDetails-section').css({display:'none'})
-});
+ });
 
-//item nav management
+
+
+   //item nav management
 $('#nav-item').on('click',()=>{
     $('#customer-section').css({display:'none'});
     $('#item-section').css({display:'block'});
@@ -23,12 +31,12 @@ $('#nav-item').on('click',()=>{
 });
 
 //order nav management
-$('#nav-order').on('click',()=>{
+  $('#nav-order').on('click',()=>{
     $('#customer-section').css({display:'none'});
     $('#item-section').css({display:'none'});
     $('#order-section').css({display:'block'})
     $('#orderDetails-section').css({display:'none'})
-});
+  });
 
 //orderDetails nav management
 $('#nav-orderDetails').on('click',()=>{
@@ -36,9 +44,9 @@ $('#nav-orderDetails').on('click',()=>{
     $('#item-section').css({display:'none'});
     $('#order-section').css({display:'none'})
     $('#orderDetails-section').css({display:'block'})
-});
+  });
 
-function loadTable() {
+function loadTable(){
     $('#customer-tbl-tbody').empty();
 
     customers.map((item, index) => {
@@ -51,7 +59,7 @@ function loadTable() {
 
         $("#customer-tbl-tbody").append(record);
     });
-}
+ }
 
 
 //save button
@@ -61,12 +69,14 @@ $('#customer-submit').on('click', ()=> {
     var customerAddress=$('#address').val();
     var customerSalary=$('#salary').val();
 
-    let customer={
-        id: customerId,
-        name: customerName,
-        address: customerAddress,
-        salary: customerSalary
-    }
+    // let customer={
+    //     id: customerId,
+    //     name: customerName,
+    //     address: customerAddress,
+    //     salary: customerSalary
+    // }
+
+    let customer=new customerModel(customerId,customerName,customerAddress,customerSalary);
 
     customers.push(customer);
 
@@ -87,6 +97,7 @@ $("#customer-update").on('click', () => {
     customerObj.name=customerName;
     customerObj.salary=customerSalary;
     customerObj.address=customerAddress;
+
 
     loadTable();
     $("#customer-reset").click();

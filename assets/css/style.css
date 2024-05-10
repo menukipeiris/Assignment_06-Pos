@@ -257,7 +257,27 @@ h3{
     color: var(-- font - color);
     margin-top: 100px;
 }
+.BtnManage>h3 {
+    position: absolute;
+    left: 160px;
+    /*right: 30px;*/
+    top: 10px;
+}
+.BtnManage>h4{
+    position: absolute;
+    left: 32px;
+    /*right: 30px;*/
+    top: 12px;
 
+}
+h2{
+    text-decoration-style: dashed;
+    position: absolute;
+    top: 550px;
+    right: 30px;
+
+
+}
 
 @media all and (max-width: 768px) {
     section{

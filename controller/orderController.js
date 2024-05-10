@@ -1,4 +1,7 @@
-var orders=[];
+import orderModel from "../model/orderModel.js";
+import {orders} from "../db/db.js";
+
+// var orders=[];
 var recordIndex;
 
 $('#customer-section').css({display:'none'});
@@ -61,12 +64,14 @@ $('#order-submit').on('click', ()=> {
     var item_quantity=$('#order_quantity').val();
     var item_total=$('#unit_price * #order_quantity').val();
 
-    let order={
-        code: item_code,
-        price: item_price,
-        quantity: item_quantity,
-        total: item_total
-    }
+    // let order={
+    //     code: item_code,
+    //     price: item_price,
+    //     quantity: item_quantity,
+    //     total: item_total
+    // }
+
+    let order=new orderModel(item_code,item_price,item_quantity,item_total);
 
     orders.push(order);
 

@@ -1,4 +1,10 @@
-var items=[];
+
+
+import itemModel from "../model/itemModel.js";
+import {items} from "../db/db.js";
+
+
+// var items=[];
 var recordIndex;
 
 $('#customer-section').css({display:'none'});
@@ -61,12 +67,14 @@ $('#item-submit').on('click', ()=> {
     var itemQuantity=$('#itemQuantity').val();
     var itemPrice=$('#itemPrice').val();
 
-    let item={
-        code: itemCode,
-        name: itemName,
-        quantity: itemQuantity,
-        price: itemPrice
-    }
+    // let item={
+    //     code: itemCode,
+    //     name: itemName,
+    //     quantity: itemQuantity,
+    //     price: itemPrice
+    // }
+
+    let item=new itemModel(itemCode,itemName,itemQuantity,itemPrice);
 
     items.push(item);
 
